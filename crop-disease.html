@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f9f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+        }
+        .upload-area {
+            border: 2px dashed #4caf50;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        #imagePreview {
+            max-width: 100%;
+            max-height: 400px;
+            margin: 20px auto;
+            display: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .healthy {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .disease {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Disease Detection</h1>
+        <p>Upload an image of your crop to analyze its health condition</p>
+        
+        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+            <p>Click to upload image or drag and drop</p>
+            <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage()">
+        </div>
+        
+        <img id="imagePreview" alt="Preview">
+        
+        <div style="text-align: center;">
+            <button onclick="analyzeImage()">Analyze Image</button>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function previewImage() {
+            const file = document.getElementById('fileInput').files[0];
+            const preview = document.getElementById('imagePreview');
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+
+        function analyzeImage() {
+            const fileInput = document.getElementById('fileInput');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files[0]) {
+                alert('Please upload an image first');
+                return;
+            }
+            
+            // Simulate analysis (in real app, this would call an API)
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<p>Analyzing image... Please wait.</p>';
+            
+            setTimeout(() => {
+                const diseases = [
+                    {name: "Leaf Rust", solution: "Apply copper-based fungicide"},
+                    {name: "Powdery Mildew", solution: "Use sulfur or potassium bicarbonate"},
+                    {name: "Bacterial Blight", solution: "Remove affected plants and use copper spray"},
+                    {name: "Healthy", solution: "No treatment needed"}
+                ];
+                
+                const randomDisease = diseases[Math.floor(Math.random() * diseases.length)];
+                
+                if (randomDisease.name === "Healthy") {
+                    resultDiv.className = 'healthy';
+                    resultDiv.innerHTML = `
+                        <h3>Analysis Result: Healthy</h3>
+                        <p>Your crop appears to be in good health!</p>
+                        <p><strong>Recommendation:</strong> ${randomDisease.solution}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'disease';
+                    resultDiv.innerHTML = `
+                        <h3>Analysis Result: Disease Detected</h3>
+                        <p><strong>Disease:</strong> ${randomDisease.name}</p>
+                        <p><strong>Recommendation:</strong> ${randomDisease.solution}</p>
+                    `;
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

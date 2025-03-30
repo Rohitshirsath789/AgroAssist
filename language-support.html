@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1976d2;
+            text-align: center;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .content-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            min-height: 150px;
+        }
+        .welcome-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .feature-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1976d2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Multilingual Support</h1>
+        <p id="subtitle">Select your preferred language from the dropdown below</p>
+        
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिंदी (Hindi)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        </select>
+        
+        <div class="content-box">
+            <p class="welcome-text" id="welcome">Welcome to AgroAssist! We support multiple Indian languages to serve you better.</p>
+            
+            <div id="features">
+                <div class="feature-item" id="feature1">Crop disease detection in your language</div>
+                <div class="feature-item" id="feature2">Market prices and weather forecasts</div>
+                <div class="feature-item" id="feature3">Government scheme information</div>
+                <div class="feature-item" id="feature4">Easy to understand interface</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Multilingual Support",
+                subtitle: "Select your preferred language from the dropdown below",
+                welcome: "Welcome to AgroAssist! We support multiple Indian languages to serve you better.",
+                features: [
+                    "Crop disease detection in your language",
+                    "Market prices and weather forecasts",
+                    "Government scheme information",
+                    "Easy to understand interface"
+                ]
+            },
+            hi: {
+                title: "बहुभाषी समर्थन",
+                subtitle: "नीचे दिए गए ड्रॉपडाउन से अपनी पसंदीदा भाषा चुनें",
+                welcome: "एग्रोअसिस्ट में आपका स्वागत है! हम आपको बेहतर सेवा देने के लिए कई भारतीय भाषाओं का समर्थन करते हैं।",
+                features: [
+                    "आपकी भाषा में फसल रोग का पता लगाना",
+                    "बाजार मूल्य और मौसम पूर्वानुमान",
+                    "सरकारी योजना की जानकारी",
+                    "समझने में आसान इंटरफेस"
+                ]
+            },
+            mr: {
+                title: "बहुभाषी समर्थन",
+                subtitle: "खालीच्या ड्रॉपडाऊनमधून तुमची पसंतीची भाषा निवडा",
+                welcome: "अॅग्रोअसिस्ट मध्ये आपले स्वागत आहे! आम्ही तुम्हाला चांगली सेवा देण्यासाठी अनेक भारतीय भाषांचे समर्थन करतो.",
+                features: [
+                    "तुमच्या भाषेत पिकाच्या आजाराचा शोध",
+                    "बाजारभाव आणि हवामान अंदाज",
+                    "सरकारी योजना माहिती",
+                    "समजण्यास सोपी इंटरफेस"
+                ]
+            },
+            ta: {
+                title: "பன்மொழி ஆதரவு",
+                subtitle: "கீழே உள்ள தேர்வு பெட்டியில் உங்களுக்கு விருப்பமான மொழியைத் தேர்ந்தெடுக்கவும்",
+                welcome: "அக்ரோஅஸிஸ்ட்டுக்கு வரவேற்கிறோம்! உங்களுக்கு சிறந்த சேவை அளிக்க பல இந்திய மொழிகளை நாங்கள் ஆதரிக்கிறோம்.",
+                features: [
+                    "உங்கள் மொழியில் பயிர் நோய் கண்டறிதல்",
+                    "சந்தை விலைகள் மற்றும் வானிலை முன்னறிவிப்புகள்",
+                    "அரசு திட்டத் தகவல்",
+                    "புரிந்துகொள்ள எளிதான இடைமுகம்"
+                ]
+            },
+            te: {
+                title: "బహుభాషా మద్దతు",
+                subtitle: "దిగువ డ్రాప్డౌన్ నుండి మీకు ఇష్టమైన భాషను ఎంచుకోండి",
+                welcome: "ఆగ్రోఅసిస్ట్‌కు స్వాగతం! మేము మీకు మంచి సేవ చేయడానికి బహుళ భారతీయ భాషలకు మద్దతు ఇస్తాము.",
+                features: [
+                    "మీ భాషలో పంటల రోగాన్ని గుర్తించడం",
+                    "మార్కెట్ ధరలు మరియు వాతావరణ పూర్వావలోకనాలు",
+                    "ప్రభుత్వ పథకం సమాచారం",
+                    "అర్థం చేసుకోవడానికి సులభమైన ఇంటర్ఫేస్"
+                ]
+            },
+            kn: {
+                title: "ಬಹುಭಾಷಾ ಬೆಂಬಲ",
+                subtitle: "ಕೆಳಗಿನ ಡ್ರಾಪ್ಡೌನ್ ನಿಂದ ನಿಮ್ಮ ಆದ್ಯತೆಯ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+                welcome: "ಆಗ್ರೋಅಸಿಸ್ಟ್‌ಗೆ ಸುಸ್ವಾಗತ! ನಾವು ನಿಮಗೆ ಉತ್ತಮ ಸೇವೆ ನೀಡಲು ಬಹು ಭಾರತೀಯ ಭಾಷೆಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತೇವೆ.",
+                features: [
+                    "ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಬೆಳೆ ರೋಗ ಪತ್ತೆ",
+                    "ಮಾರುಕಟ್ಟೆ ಬೆಲೆಗಳು ಮತ್ತು ಹವಾಮಾನ ಮುನ್ಸೂಚನೆಗಳು",
+                    "ಸರ್ಕಾರಿ ಯೋಜನೆ ಮಾಹಿತಿ",
+                    "ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸುಲಭವಾದ ಇಂಟರ್ಫೇಸ್"
+                ]
+            }
+        };
+
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const lang = this.value;
+            updateContent(lang);
+        });
+
+        function updateContent(lang) {
+            const translation = translations[lang];
+            
+            document.getElementById('title').textContent = translation.title;
+            document.getElementById('subtitle').textContent = translation.subtitle;
+            document.getElementById('welcome').textContent = translation.welcome;
+            
+            const features = document.querySelectorAll('#features .feature-item');
+            features.forEach((feature, index) => {
+                feature.textContent = translation.features[index];
+            });
+        }
+
+        // Initialize with English
+        updateContent('en');
+    </script>
+</body>
+</html>
